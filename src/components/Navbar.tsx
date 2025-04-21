@@ -36,7 +36,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2">
           <img alt="Om Homeopathy Logo" className="h-12" src="/lovable-uploads/f16f1b25-f46b-471d-9be5-2de374b67260.png" />
-          <span className="text-xl font-semibold text-om-green">Om Homeopathy</span>
+          <span className="text-2xl font-bold text-emerald-800">OM Homeopathy</span>
         </Link>
 
         {/* Desktop Navigation */}
