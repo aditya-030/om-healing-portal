@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { User, Book, Home, Info, Stethoscope, Video, GalleryHorizontal } from "lucide-react";
+import { User, Book, Home, Info, Stethoscope, Video, GalleryHorizontal, Mail } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,20 +17,21 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Updated navItems order, removed Doctor Dashboard
   const navItems = [
     { name: "Home", path: "/", icon: <Home size={18} /> },
     { name: "About", path: "/about", icon: <Info size={18} /> },
     { name: "Services", path: "/services", icon: <Stethoscope size={18} /> },
     { name: "Testimonials", path: "/testimonials", icon: <Video size={18} /> },
     { name: "Vlogs / Gallery", path: "/gallery", icon: <GalleryHorizontal size={18} /> },
-    { name: "Contact", path: "/contact", icon: <Info size={18} /> },
+    { name: "Contact", path: "/contact", icon: <Mail size={18} /> },
     { name: "Patient Login", path: "/patient-dashboard", icon: <User size={18} /> }
   ];
 
   return (
     <nav className={cn(
       "fixed top-0 w-full z-50 transition-all duration-300 py-3",
-      isScrolled ? "bg-[#A5D6A7] shadow-md" : "bg-[#A5D6A7]"
+      isScrolled ? "bg-gradient-to-r from-[#A5D6A7] via-[#C8F2D1] to-[#A5D6A7] shadow-md" : "bg-gradient-to-r from-[#A5D6A7] via-[#C8F2D1] to-[#A5D6A7]"
     )}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2">
@@ -38,15 +39,17 @@ const Navbar = () => {
           <span className="text-xl font-bold text-emerald-800">OM Homeopathy</span>
         </Link>
         {/* Desktop */}
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden md:flex items-center space-x-3">
           {navItems.map(item => (
             <Link
               key={item.path}
               to={item.path}
               className={cn(
-                "flex items-center gap-1 text-gray-800 hover:text-white transition px-2 font-medium rounded",
-                location.pathname === item.path && "text-white bg-om-green"
+                "flex items-center gap-1 text-gray-900 px-4 py-2 font-medium rounded-full transition border-2 border-transparent hover:bg-om-green/90 hover:text-white",
+                location.pathname === item.path && "text-white bg-om-green shadow",
+                "nav-link-radius"
               )}
+              style={{ borderRadius: "2rem" }}
             >
               {item.icon}
               {item.name}
@@ -54,8 +57,8 @@ const Navbar = () => {
           ))}
           <Link
             to="/appointment"
-            className="ml-3 px-5 py-2 rounded-md bg-om-green text-white font-semibold shadow-md hover:bg-om-lightGreen transition"
-            style={{ minWidth: 160, textAlign: "center" }}
+            className="ml-3 px-6 py-2 rounded-full bg-gradient-to-r from-om-green to-om-lightGreen text-white font-semibold shadow-lg hover:from-om-lightGreen hover:to-om-green hover:text-om-green transition"
+            style={{ minWidth: 170, textAlign: "center", borderRadius: "2rem" }}
           >
             <Book size={18} className="inline mr-2 -mt-1" />
             Book Appointment
@@ -79,16 +82,17 @@ const Navbar = () => {
       </div>
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-[#A5D6A7] shadow-lg py-4">
+        <div className="md:hidden bg-gradient-to-b from-[#A5D6A7] via-[#C8F2D1] to-[#A5D6A7] shadow-lg py-4">
           <div className="container mx-auto px-4 flex flex-col space-y-2">
             {navItems.map(item => (
               <Link
                 key={item.path}
                 to={item.path}
                 className={cn(
-                  "flex items-center gap-2 text-gray-800 hover:text-white px-3 py-2 rounded transition",
-                  location.pathname === item.path && "text-white bg-om-green"
+                  "flex items-center gap-2 text-gray-800 px-3 py-2 rounded-full font-medium transition border-2 border-transparent hover:bg-om-green/90 hover:text-white",
+                  location.pathname === item.path && "text-white bg-om-green shadow"
                 )}
+                style={{borderRadius: "2rem"}}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.icon}
@@ -97,9 +101,9 @@ const Navbar = () => {
             ))}
             <Link
               to="/appointment"
-              className="mt-3 px-5 py-2 rounded-md bg-om-green text-white font-semibold shadow-md hover:bg-om-lightGreen transition"
+              className="mt-3 px-6 py-2 rounded-full bg-gradient-to-r from-om-green to-om-lightGreen text-white font-semibold shadow-lg hover:bg-om-lightGreen hover:text-om-green transition"
               onClick={() => setIsMobileMenuOpen(false)}
-              style={{ minWidth: 150, textAlign: "center" }}
+              style={{ minWidth: 150, textAlign: "center", borderRadius: "2rem" }}
             >
               <Book size={18} className="inline mr-2 -mt-1" />
               Book Appointment

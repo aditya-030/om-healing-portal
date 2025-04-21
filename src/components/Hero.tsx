@@ -6,8 +6,8 @@ const Hero = () => {
     <section className="relative w-full h-[420px] md:h-[540px] lg:h-[620px] flex items-center justify-center overflow-hidden bg-om-green">
       {/* Image background */}
       <img
-        src="/lovable-uploads/Landing Page.png"
-        alt="Om Homeopathy Landing"
+        src="/lovable-uploads/b4bd1edf-f841-4d27-820a-5f174b22a1d8.png"
+        alt="Homeopathic bottles and honey"
         className="absolute inset-0 w-full h-full object-cover z-0"
         style={{ objectPosition: "center" }}
       />
