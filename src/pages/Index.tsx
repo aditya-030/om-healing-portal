@@ -62,11 +62,62 @@ const Index = () => {
     <main>
       <Hero />
       
+      {/* About Us Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                About <span className="text-om-green">Om Homeopathy</span>
+              </h2>
+              <p className="text-gray-600 mb-4">
+                Founded with a vision of bringing natural healing to everyone, Om Homeopathy is dedicated to providing personalized homeopathic treatments that address the root causes of health issues, not just their symptoms.
+              </p>
+              <p className="text-gray-600 mb-4">
+                Our approach combines traditional homeopathic wisdom with modern medical knowledge to provide holistic care for a wide range of acute and chronic conditions.
+              </p>
+              <p className="text-gray-600 mb-6">
+                Led by Dr. Kameshwar Mahto, our team of experienced homeopathic practitioners is committed to guiding you through your healing journey with compassion, expertise, and personalized attention.
+              </p>
+              <Link
+                to="/about"
+                className="inline-flex items-center text-om-green hover:text-om-lightGreen font-medium"
+              >
+                Learn More About Us
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-5 w-5 ml-2" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M14 5l7 7m0 0l-7 7m7-7H3" 
+                  />
+                </svg>
+              </Link>
+            </div>
+            <div className="relative">
+              <div className="absolute -top-4 -left-4 w-24 h-24 rounded-full bg-om-green opacity-20"></div>
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-om-blue opacity-20"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1523712999610-f77fbcfc3843" 
+                alt="Natural healing environment" 
+                className="rounded-lg shadow-lg w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              Welcome to <span className="text-om-green">Om Homeopathy</span>
+              Our <span className="text-om-green">Services</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Experience the power of natural healing through personalized homeopathic treatments 
@@ -111,21 +162,40 @@ const Index = () => {
         </div>
       </section>
       
-      <ImageSection />
+      <ImageSection 
+        imageSrc="https://images.unsplash.com/photo-1506744038136-46273834b3fb" 
+        altText="Serene natural landscape" 
+        caption="A place where natural healing begins."
+      />
       
       <ImageCarousel />
       
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              What Our Patients Say
+              Patient <span className="text-om-green">Testimonials</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Read about the experiences of those who have found healing through our homeopathic treatments.
             </p>
           </div>
           
+          {/* Video Testimonial */}
+          <div className="mb-12 max-w-3xl mx-auto">
+            <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="Patient Testimonial Video"
+                className="w-full h-[400px]"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <p className="text-center text-gray-500 mt-2">Hear directly from our patients about their healing journey</p>
+          </div>
+          
+          {/* Written Testimonials */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {testimonials.map((testimonial, index) => (
               <TestimonialCard
@@ -143,6 +213,66 @@ const Index = () => {
               className="inline-flex items-center bg-white border border-om-green text-om-green hover:bg-om-green hover:text-white font-medium px-6 py-3 rounded-md transition-all duration-300"
             >
               More Testimonials
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-5 w-5 ml-2" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M14 5l7 7m0 0l-7 7m7-7H3" 
+                />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+      
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              Our <span className="text-om-green">Gallery</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Take a peek into our clinic and explore our healing environment.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            {[
+              "https://images.unsplash.com/photo-1518495973542-4542c06a5843",
+              "https://images.unsplash.com/photo-1472396961693-142e6e269027",
+              "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9",
+              "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
+            ].map((src, index) => (
+              <div key={index} className="relative overflow-hidden rounded-lg shadow-md group">
+                <img 
+                  src={src} 
+                  alt={`Gallery image ${index + 1}`}
+                  className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Link
+              to="/gallery"
+              className="inline-flex items-center bg-white border border-om-green text-om-green hover:bg-om-green hover:text-white font-medium px-6 py-3 rounded-md transition-all duration-300"
+            >
+              View Full Gallery
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 className="h-5 w-5 ml-2" 
