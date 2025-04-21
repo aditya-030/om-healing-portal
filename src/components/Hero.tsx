@@ -3,30 +3,27 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="relative pt-20 pb-12 md:pt-24 md:pb-16 overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="/lovable-uploads/ffb00bc7-1c12-4424-be15-955af7b5a61a.png" 
-          alt="Om Homeopathy Landing Image" 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/40"></div>
-      </div>
-      
-      <div className="container relative z-10 mx-auto px-4 flex flex-col items-center">
-        <div className="text-center mb-10 md:mb-12">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 max-w-4xl mx-auto">
-            Welcome to Om Homeopathy — Natural Healing through Trusted Homeopathic Care
-          </h1>
-          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-lg mx-auto">
-            Experience the gentle power of homeopathy to restore balance and promote healing in mind, body, and spirit.
-          </p>
-          <div className="flex justify-center">
-            <Link to="/appointment" className="bg-om-green hover:bg-om-lightGreen text-white font-medium px-6 py-3 rounded-md transition-all duration-300 text-center">
-              Book an Appointment
-            </Link>
-          </div>
-        </div>
+    <section className="relative w-full h-[420px] md:h-[540px] lg:h-[620px] flex items-center justify-center overflow-hidden bg-om-green">
+      {/* Image background */}
+      <img
+        src="/lovable-uploads/ffb00bc7-1c12-4424-be15-955af7b5a61a.png" // Fallback demo image; swap to /lovable-uploads/Landing Page.png when available
+        alt="Om Homeopathy Landing"
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        style={{ objectPosition: "center" }}
+      />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/35 z-10" />
+      {/* Headline and Button */}
+      <div className="container relative z-20 flex flex-col items-center justify-center text-center">
+        <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white max-w-3xl mb-6 drop-shadow-lg">
+          Welcome to Om Homeopathy — Natural Healing through Trusted Homeopathic Care
+        </h1>
+        <Link
+          to="/appointment"
+          className="inline-block mt-2 px-8 py-3 rounded-lg bg-om-green hover:bg-om-lightGreen text-white font-semibold shadow-lg text-lg transition-all duration-200"
+        >
+          Book Appointment
+        </Link>
       </div>
     </section>
   );
