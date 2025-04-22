@@ -18,50 +18,59 @@ const WhatsAppIcon = ({ size = 22, className = "" }) => (
 );
 
 const Footer = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
   const currentYear = new Date().getFullYear();
+  
   return (
-    <footer className="pt-14 pb-7 border-t border-gray-200" style={{ backgroundColor: "rgb(61, 84, 45)" }}>
+    <footer className="pt-14 pb-7 border-t border-gray-200 bg-[#3a7265] text-white">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           {/* Logo and about */}
           <div className="col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-2">
+            <div className="flex items-center gap-2 mb-2 cursor-pointer" onClick={() => scrollToSection("home")}>
               <img alt="Om Homeopathy Logo" className="h-10" src="/lovable-uploads/e9eacbd9-bebd-4ab2-83ed-5acedb2a8222.png" />
-            </Link>
+            </div>
             <h3 className="text-xl font-semibold text-white mb-1">Om Homeopathy</h3>
             <p className="text-gray-200 mb-2">A place where natural healing begins.</p>
             <div className="flex mt-2 space-x-4">
               <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                <WhatsAppIcon size={22} className="text-white hover:text-om-green" />
+                <WhatsAppIcon size={22} className="text-white hover:text-[#dfeee9]" />
               </a>
-              <a href="#" className="hover:text-om-green" aria-label="Facebook">
+              <a href="#" className="hover:text-[#dfeee9]" aria-label="Facebook">
                 <Facebook size={20} className="text-white/80" />
               </a>
-              <a href="#" className="hover:text-om-green" aria-label="Instagram">
+              <a href="#" className="hover:text-[#dfeee9]" aria-label="Instagram">
                 <Instagram size={20} className="text-white/80" />
               </a>
-              <a href="#" className="hover:text-om-green" aria-label="Twitter">
+              <a href="#" className="hover:text-[#dfeee9]" aria-label="Twitter">
                 <Twitter size={20} className="text-white/80" />
               </a>
-              <a href="#" className="hover:text-om-green" aria-label="Linkedin">
+              <a href="#" className="hover:text-[#dfeee9]" aria-label="Linkedin">
                 <Linkedin size={20} className="text-white/80" />
               </a>
             </div>
           </div>
+          
           {/* Links */}
           <div>
             <h3 className="text-lg font-semibold mb-2 text-white">Quick Links</h3>
             <ul className="space-y-2 text-gray-100">
-              <li><Link to="/" className="hover:text-om-lightGreen transition-colors">Home</Link></li>
-              <li><Link to="/about" className="hover:text-om-lightGreen transition-colors">About</Link></li>
-              <li><Link to="/services" className="hover:text-om-lightGreen transition-colors">Services</Link></li>
-              <li><Link to="/testimonials" className="hover:text-om-lightGreen transition-colors">Testimonials</Link></li>
-              <li><Link to="/gallery" className="hover:text-om-lightGreen transition-colors">Vlogs / Gallery</Link></li>
-              <li><Link to="/contact" className="hover:text-om-lightGreen transition-colors">Contact</Link></li>
-              <li><Link to="/patient-dashboard" className="hover:text-om-lightGreen transition-colors">Patient Login</Link></li>
-              {/* Remove Doctor Dashboard from here, now only in next block */}
+              <li><button onClick={() => scrollToSection("home")} className="hover:text-[#dfeee9] transition-colors">Home</button></li>
+              <li><button onClick={() => scrollToSection("about")} className="hover:text-[#dfeee9] transition-colors">About</button></li>
+              <li><button onClick={() => scrollToSection("services")} className="hover:text-[#dfeee9] transition-colors">Services</button></li>
+              <li><button onClick={() => scrollToSection("testimonials")} className="hover:text-[#dfeee9] transition-colors">Testimonials</button></li>
+              <li><button onClick={() => scrollToSection("gallery")} className="hover:text-[#dfeee9] transition-colors">Vlogs / Gallery</button></li>
+              <li><button onClick={() => scrollToSection("contact")} className="hover:text-[#dfeee9] transition-colors">Contact</button></li>
+              <li><button onClick={() => scrollToSection("patient-login")} className="hover:text-[#dfeee9] transition-colors">Patient Login</button></li>
             </ul>
           </div>
+          
           {/* Contact Us */}
           <div>
             <h3 className="text-lg font-semibold mb-2 text-white">Contact</h3>
@@ -72,12 +81,13 @@ const Footer = () => {
               <div>Mon-Sat: 9:00 AM - 7:00 PM</div>
             </div>
           </div>
+          
           {/* Doctor Dashboard */}
           <div>
             <h3 className="text-lg font-semibold mb-2 text-white">Doctor Access</h3>
             <Link
               to="/doctor-dashboard"
-              className="inline-flex items-center gap-2 bg-white/10 text-white px-4 py-2 rounded-md hover:bg-om-green transition-colors"
+              className="inline-flex items-center gap-2 bg-white/10 text-white px-4 py-2 rounded-md hover:bg-white/20 transition-colors"
             >
               <Settings size={18} /> Doctor Dashboard
             </Link>
@@ -86,7 +96,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="border-t border-gray-200 pt-8">
+        
+        <div className="border-t border-white/20 pt-8">
           <p className="text-gray-200 text-center text-sm">
             &copy; {currentYear} Om Homeopathy, All Rights Reserved.
           </p>
@@ -95,4 +106,5 @@ const Footer = () => {
     </footer>
   );
 };
+
 export default Footer;

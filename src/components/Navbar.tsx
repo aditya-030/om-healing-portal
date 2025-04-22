@@ -1,68 +1,100 @@
 
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { User, Book, Home, Info, Stethoscope, Video, GalleryHorizontal, Mail } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const [activeSection, setActiveSection] = useState("home");
 
+  // Handle scroll event for sticky navbar and section highlighting
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
+      
+      // Find which section is currently in view
+      const sections = ["home", "about", "services", "testimonials", "gallery", "contact"];
+      let currentSection = "home";
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            currentSection = section;
+            break;
+          }
+        }
+      }
+      
+      setActiveSection(currentSection);
     };
+    
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Updated navItems order, removed Doctor Dashboard
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+    }
+  };
+
+  // Updated navItems for scrolling
   const navItems = [
-    { name: "Home", path: "/", icon: <Home size={18} /> },
-    { name: "About", path: "/about", icon: <Info size={18} /> },
-    { name: "Services", path: "/services", icon: <Stethoscope size={18} /> },
-    { name: "Testimonials", path: "/testimonials", icon: <Video size={18} /> },
-    { name: "Vlogs / Gallery", path: "/gallery", icon: <GalleryHorizontal size={18} /> },
-    { name: "Contact", path: "/contact", icon: <Mail size={18} /> },
-    { name: "Patient Login", path: "/patient-dashboard", icon: <User size={18} /> }
+    { name: "Home", id: "home", icon: <Home size={18} /> },
+    { name: "About", id: "about", icon: <Info size={18} /> },
+    { name: "Services", id: "services", icon: <Stethoscope size={18} /> },
+    { name: "Testimonials", id: "testimonials", icon: <Video size={18} /> },
+    { name: "Vlogs / Gallery", id: "gallery", icon: <GalleryHorizontal size={18} /> },
+    { name: "Contact", id: "contact", icon: <Mail size={18} /> }
   ];
 
   return (
     <nav className={cn(
       "fixed top-0 w-full z-50 transition-all duration-300 py-3",
-      isScrolled ? "bg-gradient-to-r from-[#A5D6A7] via-[#C8F2D1] to-[#A5D6A7] shadow-md" : "bg-gradient-to-r from-[#A5D6A7] via-[#C8F2D1] to-[#A5D6A7]"
+      isScrolled ? "bg-[#f7f8f3] shadow-md" : "bg-[#f7f8f3]"
     )}>
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-2">
+        <div className="flex items-center gap-2 cursor-pointer" onClick={() => scrollToSection("home")}>
           <img alt="Om Homeopathy Logo" className="h-10" src="/lovable-uploads/f16f1b25-f46b-471d-9be5-2de374b67260.png" />
           <span className="text-xl font-bold text-emerald-800">OM Homeopathy</span>
-        </Link>
+        </div>
         {/* Desktop */}
-        <div className="hidden md:flex items-center space-x-3">
+        <div className="hidden md:flex items-center space-x-2">
           {navItems.map(item => (
-            <Link
-              key={item.path}
-              to={item.path}
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
               className={cn(
-                "flex items-center gap-1 text-gray-900 px-4 py-2 font-medium rounded-full transition border-2 border-transparent hover:bg-om-green/90 hover:text-white",
-                location.pathname === item.path && "text-white bg-om-green shadow",
-                "nav-link-radius"
+                "flex items-center gap-1 text-gray-900 px-4 py-2 font-medium rounded-full transition border-2 border-transparent hover:bg-[#dfeee9]",
+                activeSection === item.id && "bg-[#dfeee9] shadow",
               )}
-              style={{ borderRadius: "2rem" }}
+              style={{ borderRadius: "2rem", paddingLeft: "0.25rem" }}
             >
               {item.icon}
               {item.name}
-            </Link>
+            </button>
           ))}
-          <Link
-            to="/appointment"
-            className="ml-3 px-6 py-2 rounded-full bg-gradient-to-r from-om-green to-om-lightGreen text-white font-semibold shadow-lg hover:from-om-lightGreen hover:to-om-green hover:text-om-green transition"
+          <button
+            onClick={() => scrollToSection("patient-login")}
+            className="flex items-center gap-1 text-gray-900 px-4 py-2 font-medium rounded-full transition border-2 border-[#3a7265] hover:bg-[#dfeee9]"
+            style={{ borderRadius: "2rem", paddingLeft: "0.25rem" }}
+          >
+            <User size={18} />
+            Patient Login
+          </button>
+          <button
+            onClick={() => scrollToSection("appointment")}
+            className="ml-3 px-6 py-2 rounded-full bg-[#3a7265] text-white font-semibold shadow-lg hover:bg-[#3a7265]/90 transition"
             style={{ minWidth: 170, textAlign: "center", borderRadius: "2rem" }}
           >
             <Book size={18} className="inline mr-2 -mt-1" />
             Book Appointment
-          </Link>
+          </button>
         </div>
         {/* Mobile button */}
         <button
@@ -82,32 +114,38 @@ const Navbar = () => {
       </div>
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-gradient-to-b from-[#A5D6A7] via-[#C8F2D1] to-[#A5D6A7] shadow-lg py-4">
+        <div className="md:hidden bg-[#f7f8f3] shadow-lg py-4">
           <div className="container mx-auto px-4 flex flex-col space-y-2">
             {navItems.map(item => (
-              <Link
-                key={item.path}
-                to={item.path}
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
                 className={cn(
-                  "flex items-center gap-2 text-gray-800 px-3 py-2 rounded-full font-medium transition border-2 border-transparent hover:bg-om-green/90 hover:text-white",
-                  location.pathname === item.path && "text-white bg-om-green shadow"
+                  "flex items-center gap-2 text-gray-800 px-3 py-2 rounded-full font-medium transition border-2 border-transparent hover:bg-[#dfeee9]",
+                  activeSection === item.id && "bg-[#dfeee9] shadow"
                 )}
                 style={{borderRadius: "2rem"}}
-                onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.icon}
                 {item.name}
-              </Link>
+              </button>
             ))}
-            <Link
-              to="/appointment"
-              className="mt-3 px-6 py-2 rounded-full bg-gradient-to-r from-om-green to-om-lightGreen text-white font-semibold shadow-lg hover:bg-om-lightGreen hover:text-om-green transition"
-              onClick={() => setIsMobileMenuOpen(false)}
+            <button
+              onClick={() => scrollToSection("patient-login")}
+              className="flex items-center gap-2 text-gray-800 px-3 py-2 rounded-full font-medium transition border-2 border-[#3a7265] hover:bg-[#dfeee9]"
+              style={{borderRadius: "2rem"}}
+            >
+              <User size={18} />
+              Patient Login
+            </button>
+            <button
+              onClick={() => scrollToSection("appointment")}
+              className="mt-3 px-6 py-2 rounded-full bg-[#3a7265] text-white font-semibold shadow-lg hover:bg-[#3a7265]/90 transition"
               style={{ minWidth: 150, textAlign: "center", borderRadius: "2rem" }}
             >
               <Book size={18} className="inline mr-2 -mt-1" />
               Book Appointment
-            </Link>
+            </button>
           </div>
         </div>
       )}

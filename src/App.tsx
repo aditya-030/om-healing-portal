@@ -3,19 +3,24 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import Index from "./pages/Index";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Testimonials from "./pages/Testimonials";
-import Contact from "./pages/Contact";
-import Appointment from "./pages/Appointment";
-import Gallery from "./pages/Gallery";
 import PatientDashboard from "./pages/PatientDashboard";
 import DoctorDashboard from "./pages/DoctorDashboard";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
+  return null;
+};
 
 const queryClient = new QueryClient();
 
@@ -25,22 +30,15 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div style={{ backgroundColor: "rgb(216, 223, 219)" }} className="min-h-screen">
+        <ScrollToTop />
+        <div className="min-h-screen flex flex-col">
           <Navbar />
-          <div className="pt-16">
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/testimonials" element={<Testimonials />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/appointment" element={<Appointment />} />
-              <Route path="/patient-dashboard" element={<PatientDashboard />} />
-              <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </div>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/patient-dashboard" element={<PatientDashboard />} />
+            <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
           <Footer />
         </div>
       </BrowserRouter>

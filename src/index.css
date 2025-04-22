@@ -73,7 +73,16 @@
 
   body {
     @apply bg-background text-foreground;
-    background-color: rgb(216, 223, 219); /* Soft greenish background */
+    background-color: rgb(247, 248, 243);
   }
 }
 
+/* Add support for sticky navbar and smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* For proper section spacing with fixed navbar */
+section {
+  scroll-margin-top: 80px;
+}
