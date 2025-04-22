@@ -1,9 +1,10 @@
-
 import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
+import WhatsAppCard from "@/components/WhatsAppCard";
+import ContactInfoCard from "@/components/ContactInfoCard";
 import { useState } from "react";
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 const Index = () => {
   const [formData, setFormData] = useState({
@@ -25,11 +26,11 @@ const Index = () => {
     setFormData({ name: "", email: "", message: "" });
   };
 
-  // Services data
   const services = [
     {
-      title: "Chronic Diseases",
-      description: "Personalized homeopathic treatments for long-term health conditions.",
+      title: "Chronic Disease Treatment",
+      description: "Natural remedies for long-term conditions",
+      image: "/lovable-uploads/4e7b6190-1a7f-4712-941f-bb32814cb3de.png",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -37,8 +38,9 @@ const Index = () => {
       )
     },
     {
-      title: "Allergies & Immunity",
-      description: "Boost your natural immunity and find relief from allergies.",
+      title: "Women's Health",
+      description: "Specialized care for women's wellness",
+      image: "/lovable-uploads/4e7b6190-1a7f-4712-941f-bb32814cb3de.png",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -46,18 +48,28 @@ const Index = () => {
       )
     },
     {
-      title: "Skin Conditions",
-      description: "Effective remedies for various skin issues and disorders.",
+      title: "Pediatric Care",
+      description: "Gentle healing for children",
+      image: "/lovable-uploads/4e7b6190-1a7f-4712-941f-bb32814cb3de.png",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
         </svg>
       )
+    },
+    {
+      title: "Mental Health",
+      description: "Holistic mental wellness support",
+      image: "/lovable-uploads/4e7b6190-1a7f-4712-941f-bb32814cb3de.png",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+      )
     }
   ];
 
-  // Video testimonials
-  const videoTestimonials = [
+  const testimonials = [
     {
       id: 1,
       embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -78,29 +90,12 @@ const Index = () => {
     }
   ];
 
-  // Gallery items
-  const galleryItems = [
-    {
-      type: "image",
-      src: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07",
-      alt: "Clinic flowers"
-    },
-    {
-      type: "image",
-      src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-      alt: "Clinic environment"
-    },
-    {
-      type: "image",
-      src: "https://images.unsplash.com/photo-1472396961693-142e6e269027",
-      alt: "Healing team"
-    },
-    {
-      type: "video",
-      embedUrl: "https://www.youtube.com/embed/4NQpTvNcV4w",
-      title: "Clinic Tour"
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
-  ];
+  };
 
   return (
     <main className="bg-[#f7f8f3] pt-16">
@@ -111,23 +106,41 @@ const Index = () => {
 
       {/* About Section */}
       <section id="about" className="py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-5">
-            About <span className="text-[#3a7265]">Om Homeopathy</span>
-          </h2>
-          <div className="max-w-3xl mx-auto">
-            <p className="text-gray-700 text-lg mb-4">
-              At Om Homeopathy, our mission is to restore harmony and wellness through the power of homeopathic medicine. 
-              We believe in treating the whole person, not just the symptoms, to achieve true and lasting healing.
-            </p>
-            <p className="text-gray-700 text-base mb-4">
-              Guided by the vision and values of compassionate natural healing, we use individualized treatments that address the root causes of disease, 
-              creating personalized plans that honor the body's natural healing abilities.
-            </p>
-            <p className="text-gray-700 text-base">
-              Our founder, Dr. Kameshwar Mahto, is committed to providing personalized patient care rooted in classical homeopathic principles for all ages and life stages.
-              With years of expertise, we've helped thousands of patients find relief and restoration naturally.
-            </p>
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row gap-8 items-center">
+            <div className="md:w-1/2">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-5">
+                About <span className="text-[#3a7265]">Om Homeopathy</span>
+              </h2>
+              
+              <div className="max-w-3xl mx-auto">
+                <p className="text-gray-700 text-lg mb-4">
+                  At Om Homeopathy, our mission is to restore harmony and wellness through the power of homeopathic medicine. 
+                  We believe in treating the whole person, not just the symptoms, to achieve true and lasting healing.
+                </p>
+                <p className="text-gray-700 text-base mb-4">
+                  Guided by the vision and values of compassionate natural healing, we use individualized treatments that address the root causes of disease, 
+                  creating personalized plans that honor the body's natural healing abilities.
+                </p>
+                <p className="text-gray-700 text-base">
+                  Our founder, Dr. Kameshwar Mahto, is committed to providing personalized patient care rooted in classical homeopathic principles for all ages and life stages.
+                  With years of expertise, we've helped thousands of patients find relief and restoration naturally.
+                </p>
+              </div>
+              <Button 
+                className="mt-6 bg-blue-600 hover:bg-blue-700"
+                onClick={() => scrollToSection("about")}
+              >
+                More About Us
+              </Button>
+            </div>
+            <div className="md:w-1/2">
+              <img
+                src="/lovable-uploads/4e7b6190-1a7f-4712-941f-bb32814cb3de.png"
+                alt="Om Homeopathy Clinic"
+                className="rounded-lg shadow-lg w-full h-auto"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -135,17 +148,8 @@ const Index = () => {
       {/* Services Section */}
       <section id="services" className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              Our <span className="text-[#3a7265]">Services</span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Experience the power of natural healing through personalized homeopathic treatments 
-              that address the root cause of your health concerns.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
               <ServiceCard
                 key={index}
@@ -156,27 +160,15 @@ const Index = () => {
               />
             ))}
           </div>
-          
-          <div className="text-center mt-12">
-            <button 
-              className="inline-flex items-center border border-[#3a7265] text-[#3a7265] hover:bg-[#3a7265] hover:text-white font-medium px-6 py-3 rounded-md transition-all duration-300"
-            >
-              View All Services
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                className="h-5 w-5 ml-2" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor"
-              >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M14 5l7 7m0 0l-7 7m7-7H3" 
-                />
-              </svg>
-            </button>
+        </div>
+      </section>
+
+      {/* Contact Section with WhatsApp Integration */}
+      <section id="contact" className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <ContactInfoCard />
+            <WhatsAppCard phoneNumber="91XXXXXXXXXX" />
           </div>
         </div>
       </section>
@@ -193,7 +185,7 @@ const Index = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8">
-            {videoTestimonials.map((testimonial) => (
+            {testimonials.map((testimonial) => (
               <div key={testimonial.id} className="rounded-lg overflow-hidden shadow bg-white">
                 <div className="aspect-w-16 aspect-h-9">
                   <iframe
@@ -233,7 +225,7 @@ const Index = () => {
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {galleryItems.map((item, index) => (
+            {/* {galleryItems.map((item, index) => (
               <div key={index} className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden shadow group">
                 {item.type === "image" ? (
                   <img 
@@ -251,7 +243,7 @@ const Index = () => {
                   />
                 )}
               </div>
-            ))}
+            ))} */}
           </div>
           <div className="text-center mt-8">
             <button className="inline-block bg-[#3a7265] text-white font-medium px-6 py-3 rounded-md hover:bg-[#3a7265]/80 transition-all mt-2">

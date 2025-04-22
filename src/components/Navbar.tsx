@@ -64,16 +64,16 @@ const Navbar = () => {
           <span className="text-xl font-bold text-emerald-800">OM Homeopathy</span>
         </div>
         {/* Desktop */}
-        <div className="hidden md:flex items-center space-x-2">
+        <div className="hidden md:flex items-center space-x-2 ml-auto w-3/5 justify-end">
           {navItems.map(item => (
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
               className={cn(
-                "flex items-center gap-1 text-gray-900 px-4 py-2 font-medium rounded-full transition border-2 border-transparent hover:bg-[#dfeee9]",
+                "flex items-center gap-1 text-sm text-gray-900 px-4 py-2 font-medium rounded-full transition border-2 border-transparent hover:bg-[#dfeee9]",
                 activeSection === item.id && "bg-[#dfeee9] shadow",
               )}
-              style={{ borderRadius: "2rem", paddingLeft: "0.25rem" }}
+              style={{borderRadius: "2rem", paddingLeft: "0.25rem"}}
             >
               {item.icon}
               {item.name}
@@ -81,16 +81,16 @@ const Navbar = () => {
           ))}
           <button
             onClick={() => scrollToSection("patient-login")}
-            className="flex items-center gap-1 text-gray-900 px-4 py-2 font-medium rounded-full transition border-2 border-[#3a7265] hover:bg-[#dfeee9]"
-            style={{ borderRadius: "2rem", paddingLeft: "0.25rem" }}
+            className="flex items-center gap-1 text-sm text-gray-900 px-4 py-2 font-medium rounded-full transition border-2 border-[#3a7265] hover:bg-[#dfeee9]"
+            style={{borderRadius: "2rem", paddingLeft: "0.25rem"}}
           >
             <User size={18} />
             Patient Login
           </button>
           <button
             onClick={() => scrollToSection("appointment")}
-            className="ml-3 px-6 py-2 rounded-full bg-[#3a7265] text-white font-semibold shadow-lg hover:bg-[#3a7265]/90 transition"
-            style={{ minWidth: 170, textAlign: "center", borderRadius: "2rem" }}
+            className="ml-3 px-6 py-2 rounded-full bg-[#3a7265] text-white text-sm font-semibold shadow-lg hover:bg-[#3a7265]/90 transition"
+            style={{minWidth: 170, textAlign: "center", borderRadius: "2rem"}}
           >
             <Book size={18} className="inline mr-2 -mt-1" />
             Book Appointment
@@ -152,4 +152,5 @@ const Navbar = () => {
     </nav>
   );
 };
+
 export default Navbar;
