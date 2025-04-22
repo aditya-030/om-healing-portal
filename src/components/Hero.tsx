@@ -12,16 +12,12 @@ const Hero = () => {
 
   return (
     <section className="relative w-full h-[420px] md:h-[540px] lg:h-[620px] flex items-center justify-center overflow-hidden">
-      {/* Image background */}
       <img
-        src="/lovable-uploads/ffb00bc7-1c12-4424-be15-955af7b5a61a.png"
-        alt="Homeopathic bottles and honey"
+        src="/lovable-uploads/29a8b065-218d-4a90-afcd-59233e2e77dd.png"
+        alt="Om Homeopathy Hero"
         className="absolute inset-0 w-full h-full object-cover z-0"
-        style={{ objectPosition: "center" }}
       />
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/35 z-10" />
-      {/* Headline and Buttons */}
       <div className="container relative z-20 flex flex-col items-center justify-center text-center">
         <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white max-w-3xl mb-6 drop-shadow-lg">
           Welcome to Om Homeopathy — Natural Healing through Trusted Homeopathic Care
