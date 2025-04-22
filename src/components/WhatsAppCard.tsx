@@ -1,5 +1,5 @@
 
-import { WhatsappIcon } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 interface WhatsAppCardProps {
   phoneNumber: string;
@@ -15,7 +15,7 @@ const WhatsAppCard = ({ phoneNumber }: WhatsAppCardProps) => {
     >
       <div className="flex flex-col items-center gap-4">
         <div className="w-12 h-12 bg-[#25D366] rounded-full flex items-center justify-center">
-          <WhatsappIcon size={24} className="text-white" />
+          <MessageCircle size={24} className="text-white" />
         </div>
         <h3 className="text-xl font-semibold text-gray-800">Chat with us on WhatsApp</h3>
         <p className="text-gray-600">Quick replies for appointment & queries</p>
