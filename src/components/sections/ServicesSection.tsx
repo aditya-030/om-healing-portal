@@ -1,5 +1,7 @@
 
 import ServiceCard from "@/components/ServiceCard";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const ServicesSection = () => {
   const services = [
@@ -56,9 +58,21 @@ const ServicesSection = () => {
               title={service.title}
               description={service.description}
               icon={service.icon}
-              link="#"
+              link="/services"
             />
           ))}
+        </div>
+        <div className="mt-12 text-center">
+          <Button 
+            asChild
+            variant="outline"
+            size="lg"
+            className="bg-[#D3E4FD] text-[#1A1F2C] hover:bg-[#D3E4FD]/90 border-2 border-[#1A1F2C]/10"
+          >
+            <Link to="/services">
+              More Services
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
-
 import { Link } from "react-router-dom";
 import ServiceCard from "@/components/ServiceCard";
+import AnimalHomeopathySection from "@/components/sections/AnimalHomeopathySection";
 
 const Services = () => {
   const services = [
@@ -127,6 +127,8 @@ const Services = () => {
           </div>
         </div>
       </section>
+
+      <AnimalHomeopathySection />
 
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
