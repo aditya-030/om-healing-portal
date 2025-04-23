@@ -1,3 +1,6 @@
+
+import WeeklyBookingChart from "@/components/WeeklyBookingChart";
+
 const AppointmentSection = () => {
   return (
     <section id="appointment" className="py-16 bg-[#f7f8f3]">

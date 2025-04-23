@@ -1,5 +1,5 @@
-
 import TestimonialCard from "@/components/TestimonialCard";
+import { Link } from "react-router-dom";
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -53,12 +53,11 @@ const TestimonialsSection = () => {
             </div>
           ))}
         </div>
-        <div className="text-center">
-          <TestimonialCard
-            content="After years of suffering from allergies, I finally found relief with Om Homeopathy. Their holistic approach has transformed my health completely."
-            name="Priya Shah"
-            role="Patient"
-          />
+        
+        <div className="text-center mt-8">
+          <Link to="/testimonials" className="inline-block bg-[#3a7265] text-white px-6 py-3 rounded-md hover:bg-[#3a7265]/80 transition-colors">
+            View More Testimonials
+          </Link>
         </div>
       </div>
     </section>
