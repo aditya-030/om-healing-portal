@@ -27,7 +27,7 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-              About <span className="text-om-green">Om Homeopathy</span>
+              About <span className="text-[#3a7265]">Om Homeopathy</span>
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Discover our journey, mission, and the dedicated team behind our natural healing practice.
@@ -41,8 +41,8 @@ const About = () => {
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <div className="md:w-1/2">
               <img 
-                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" 
-                alt="Om Homeopathy Clinic" 
+                src="/lovable-uploads/91423c29-9bad-470e-a388-aef213c725f9.png" 
+                alt="Om Homeopathy Team" 
                 className="rounded-lg shadow-md w-full h-auto"
               />
             </div>

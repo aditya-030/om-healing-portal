@@ -1,5 +1,5 @@
-
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const AboutSection = () => {
   const scrollToSection = (id: string) => {
@@ -33,10 +33,12 @@ const AboutSection = () => {
               </p>
             </div>
             <Button 
-              className="mt-6 bg-blue-600 hover:bg-blue-700"
-              onClick={() => scrollToSection("about")}
+              asChild
+              className="mt-6 bg-[#3a7265] hover:bg-[#3a7265]/90"
             >
-              More About Us
+              <Link to="/about">
+                More About Us
+              </Link>
             </Button>
           </div>
           <div className="md:w-1/2">
