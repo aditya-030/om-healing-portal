@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 const GallerySection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -64,9 +65,12 @@ const GallerySection = () => {
           ))}
         </div>
         <div className="text-center mt-8">
-          <button className="inline-block bg-[#3a7265] text-white font-medium px-6 py-3 rounded-md hover:bg-[#3a7265]/80 transition-all">
+          <Link 
+            to="/gallery"
+            className="inline-block bg-[#3a7265] text-white font-medium px-6 py-3 rounded-md hover:bg-[#3a7265]/80 transition-all"
+          >
             View More
-          </button>
+          </Link>
         </div>
       </div>
     </section>
