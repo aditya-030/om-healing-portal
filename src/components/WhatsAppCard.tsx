@@ -12,7 +12,7 @@ const WhatsAppCard = ({ phoneNumber }: WhatsAppCardProps) => {
   };
 
   return (
-    <Card className="p-6 bg-white">
+    <Card className="p-6">
       <h3 className="text-lg font-semibold mb-3">Contact via WhatsApp</h3>
       <p className="text-gray-600 mb-4">
         Click below to chat with us on WhatsApp for quick responses

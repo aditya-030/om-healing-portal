@@ -1,8 +1,8 @@
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { Link } from "react-router-dom";
 
 const GallerySection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -29,14 +29,9 @@ const GallerySection = () => {
   return (
     <section id="gallery" className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
-            Our <span className="text-[#3a7265]">Gallery</span>
-          </h2>
-          <p className="text-gray-700 max-w-xl mx-auto">
-            Take a virtual tour of our clinic and facilities
-          </p>
-        </div>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+          Our <span className="text-[#3a7265]">Gallery</span>
+        </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
           {images.map((image, index) => (
             <Card

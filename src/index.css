@@ -77,12 +77,10 @@
   }
 }
 
-/* Add support for sticky navbar and smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* For proper section spacing with fixed navbar */
 section {
   scroll-margin-top: 80px;
 }
