@@ -84,3 +84,19 @@ html {
 section {
   scroll-margin-top: 80px;
 }
+
+.text-navy-800 {
+  color: #1e3a8a;
+}
+
+.text-navy-900 {
+  color: #0f172a;
+}
+
+.bg-navy-700 {
+  background-color: #1e40af;
+}
+
+.bg-navy-900 {
+  background-color: #0f172a;
+}
