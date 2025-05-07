@@ -1,6 +1,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Facebook, Instagram, WhatsApp } from "lucide-react";
+import { Facebook, Instagram } from "lucide-react";
 import { useState } from "react";
 
 interface DoctorCardProps {
@@ -40,7 +40,9 @@ const DoctorCard = ({ name, title, image, description }: DoctorCardProps) => {
               <Facebook className="text-[#3a7265] w-5 h-5" />
             </button>
             <button className="bg-white rounded-full p-2 hover:bg-gray-100 transition-colors">
-              <WhatsApp className="text-[#3a7265] w-5 h-5" />
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#3a7265] w-5 h-5">
+                <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/>
+              </svg>
             </button>
           </div>
         </div>
